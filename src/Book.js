@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 // import { render } from 'react-dom';
-import {Card, Row, Col} from 'react-bootstrap';
+import {Button, Card, Row, Col, ButtonToolbar} from 'react-bootstrap';
+import { AddBkModal} from './AddBkModal';
 
 export class Book extends Component{
     constructor(props){
         super(props);
-        this.state = {bks:[]}
+        this.state = {bks:[], addModalShow:false}
     }
     refreshList(){
         fetch(process.env.REACT_DR_API+'book')
@@ -22,8 +23,10 @@ export class Book extends Component{
     }
     render(){
         const {bks}= this.state;
+        let addModalClose=()=>this.setState({addModalShow:false});
         return(
-            <Row xs={1} md={2} l={4} className="g-12">
+            <div>
+                <Row xs={1} md={4} lg={6} className="g-18">
                 {Array.from({ length: 12 }).map((_, idx) => (
                     <Col>
                     {bks.map(bk=>
@@ -39,7 +42,14 @@ export class Book extends Component{
                     )};
                     </Col>
                 ))}
-            </Row>
+                </Row>
+                <ButtonToolbar>
+                    <Button variant='primary' onClick={()=>this.setState({addModalShow:true})}>
+                    Add Book
+                    </Button>
+                    <AddBkModal show={this.state.addModalShow} onHide={addModalClose}/>
+                </ButtonToolbar>
+            </div>    
         )      
     }
 }
