@@ -40,13 +40,23 @@ export class AddBkModal extends Component{
                         <Row>
                             <Col sm={6}>
                                 <Form onSubmit={this.handleSubmit}>
-                                    <Form.Group controlId="BookTitle">
-                                        <Form.Label> BookTitle </Form.Label>
+                                    <Form.Group className ="mb-3" controlId="BookCover">
+                                        <Form.Label> Book Cover </Form.Label>
+                                        <Form.Control 
+                                        name="BookCover" type="file" required placeholder="Upload cover">
+                                        </Form.Control>
+                                    </Form.Group>
+                                    <Form.Group className ="mb-3" controlId="BookTitle">
+                                        <Form.Label> Book Title </Form.Label>
                                         <Form.Control 
                                         name="BookTitle" type="text" required placeholder="BookTitle">
                                         </Form.Control>
                                     </Form.Group>
-                                    <Form.Group controlId="BookTitle">
+                                    <Form.Group className ="mb-3" controlId="BookDescription">
+                                        <Form.Label> Book Description </Form.Label>
+                                        <Form.Control as="textarea" rows={4} />
+                                    </Form.Group>
+                                    <Form.Group>
                                         <Button type="submit" variant="primary"> 
                                         Add Book 
                                         </Button>

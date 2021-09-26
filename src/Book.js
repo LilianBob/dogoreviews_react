@@ -33,9 +33,11 @@ export class Book extends Component{
                         <Card key="{bk.BookId"> style={{ width: '18rem' }}
                             <Card.Img variant="top" src="{bk.BookCover}" />
                             <Card.Body>
-                                <Card.Title>{bk.BookTitle}</Card.Title>
+                                <Card.Title>{bk.BookId}</Card.Title>
+                                <Card.Text>{bk.BookTitle}</Card.Text>
                                 <Card.Text>{bk.BookDescription}</Card.Text>
                                 <Card.Link href="#"> Add a review </Card.Link>
+                                <Card.Link href="#"> Edit/Delete </Card.Link>
                                 <Card.Link href="#"> More on this book </Card.Link>
                             </Card.Body>
                         </Card>
